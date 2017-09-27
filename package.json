@@ -1,0 +1,27 @@
+{
+  "author": "Ersun Warncke <ersun.warncke@gmail.com>",
+  "dependencies": {
+    "change-case": "3.0.1",
+    "if-defined": "1.0.14",
+    "lodash": "4.17.4"
+  },
+  "description": "",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "mocha": "3.5.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "engines": {
+    "node": ">=7.6.0"
+  },
+  "license": "MIT",
+  "main": "lib/immutable-global.js",
+  "name": "immutable-global",
+  "repository": "warncke/immutable-global",
+  "scripts": {
+    "test": "mocha"
+  },
+  "version": "0.1.0"
+}
