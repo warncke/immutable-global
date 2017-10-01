@@ -13,15 +13,19 @@ and provides a reset mechanism which is needed for unit tests.
 
     var global = new ImmutableGlobal('MyModule', {foo: true})
 
-This will create a new global data object stored at `global.__my_module__`.
+This will create a new global data object stored at:
+
+    global.__immutable_global.__my_module__
+
 This object will be initialized with the default values `foo: true` and
 whenever it is reset it will be reset to its default state.
 
 ## Get global data
 
-    var data = global.data()
+    var data = global.data
 
-The `data` method returns the global data object.
+The `data` property of the ImmutableGlobal instance references the global data
+for the module.
 
 ## Reset global data
 

@@ -22,10 +22,8 @@ describe('immutable-global', function () {
         assert.isObject(immutableGlobal.data)
         // should have refresh method
         assert.isFunction(immutableGlobal.reset)
-        // should register data
-        assert.isObject(global.__foo__)
         // should register instance
-        assert.isObject(global.__immutable_global__.__foo__)
+        assert.deepEqual(global.__immutable_global__.__foo__, immutableGlobal)
     })
 
     it('should have static methods', function () {
