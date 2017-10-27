@@ -15,10 +15,21 @@ and provides a reset mechanism which is needed for unit tests.
 
 This will create a new global data object stored at:
 
-    global.__immutable_global.__my_module__
+    global.__immutable_global__.MyModule
 
 This object will be initialized with the default values `foo: true` and
 whenever it is reset it will be reset to its default state.
+
+## Get global instance for module
+
+    var global = ImmutableGlobal.global('MyModule')
+
+`global.data` will have the global data for the module. Will throw error if
+module does not have global instance registered.
+
+## Check if module has global instance
+
+    ImmutableGlobal.hasGlobal('MyModule') 
 
 ## Get global data
 

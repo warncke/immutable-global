@@ -23,7 +23,7 @@ describe('immutable-global', function () {
         // should have refresh method
         assert.isFunction(immutableGlobal.reset)
         // should register instance
-        assert.deepEqual(global.__immutable_global__.__foo__, immutableGlobal)
+        assert.deepEqual(global.__immutable_global__.foo, immutableGlobal)
     })
 
     it('should have static methods', function () {
@@ -82,8 +82,28 @@ describe('immutable-global', function () {
         assert.deepEqual(immutableGlobal.data, {foo: true})
     })
 
-    it('should throw error when trying to use ImmutableCore', function () {
-        assert.throws(() => new ImmutableGlobal('ImmutableGlobal'))
+    it('hasGlobal should return false when no module defined', function () {
+        assert.isFalse(ImmutableGlobal.hasGlobal('foo'))
     })
 
+    it('hasGlobal should return true when module defined', function () {
+        // instantiate new instance
+        var immutableGlobal = new ImmutableGlobal('foo', {foo: true})
+        // check module
+        assert.isTrue(ImmutableGlobal.hasGlobal('foo'))
+    })
+
+    it('should get global instance', function () {
+        // instantiate new instance
+        var immutableGlobal = new ImmutableGlobal('foo', {foo: true})
+        // check global
+        assert.isObject(ImmutableGlobal.global('foo'))
+        assert.isTrue(ImmutableGlobal.global('foo').data.foo)
+    })
+
+    it('should throw error getting global instance not defined', function () {
+        assert.throws(() => {
+            ImmutableGlobal.global('foo')
+        }, 'ImmutableGlobal Error: foo moduleName not defined')
+    })
 })
